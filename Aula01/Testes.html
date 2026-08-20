@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Pinga</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+  <!-- Conteúdo que ocupa a tela toda -->
+ <h1>TITULO DA PÁGINA</h1>
+      <a href ="">Link</a>
+      <a href ="">Link</a>
+    </div>
+    <button class="btn btn-primary">Teste</button>
+    <script src="./script.js"></script>
+
+    <!-- Topo -->
+    <nav class="navbar navbar-dark bg-dark sticky-top p-3 shadow">
+      <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 fs-6" href="#">Meu Painel</a>
+      <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+          <a class="nav-link px-3 text-white" href="#">Sair</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Menu Lateral -->
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse border-end min-vh-100 p-3">
+          <ul class="nav flex-column">
+            <li class="nav-item mb-2"><a href="#" class="nav-link active text-primary">Início</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link text-secondary">Pedidos</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link text-secondary">Produtos</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link text-secondary">Clientes</a></li>
+          </ul>
+        </nav>
+
+        <!-- Conteúdo Principal -->
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Resumo Geral</h1>
+          </div>
+
+          <!-- Cards de Indicadores -->
+          <div class="row text-white mb-4">
+            <div class="col-md-4 mb-3">
+              <div class="card bg-primary p-3">
+                <h5>Usuários</h5>
+                <h3>1.245</h3>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="card bg-success p-3">
+                <h5>Vendas</h5>
+                <h3>R$ 34.500</h3>
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <div class="card bg-danger p-3">
+                <h5>Erros</h5>
+                <h3>3</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabela Recente -->
+          <h2>Últimos Pedidos</h2>
+          <div class="table-responsive bg-white p-3 rounded shadow-sm">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Cliente</th>
+                  <th>Data</th>
+                  <th>Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1001</td>
+                  <td>Ana Souza</td>
+                  <td>05/08/2026</td>
+                  <td>R$ 150,00</td>
+                </tr>
+                <tr>
+                  <td>1002</td>
+                  <td>Carlos Lima</td>
+                  <td>05/08/2026</td>
+                  <td>R$ 89,90</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://jsdelivr.net"></script>
+  </body>
+</html>

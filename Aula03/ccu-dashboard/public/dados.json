@@ -1,0 +1,11 @@
+{
+  "redes": [
+    { "id": 1, "protocolo": "Roteamento OSPF", "ip": "10.0.0.5", "statusInicial": "UP" },
+    { "id": 2, "protocolo": "Sessão BGP", "ip": "10.0.0.1", "statusInicial": "UP" },
+    { "id": 3, "protocolo": "Satélite BGAN", "ip": "192.168.1.2", "statusInicial": "DOWN" }
+  ],
+  "veiculos": [
+    { "id": "V-01", "modelo": "🚙", "descricao": "Suporte N1", "tempoAnimacao": "3s" },
+    { "id": "V-02", "modelo": "🏎️", "descricao": "Alta Performance", "tempoAnimacao": "0.5s" }
+  ]
+}

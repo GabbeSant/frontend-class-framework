@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ajustado para a versão estável atual do Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Pinga</title>
+  </head>
+  <body>
+    <!-- 1. Corrigido o erro de digitação de "container" -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Status</h2>
+        
+        <!-- 2. Colocado todas as colunas dentro da mesma "row" -->
+        <div class="row">
+            
+            <!-- Card 1: Sucesso -->
+            <div class="col-12 col-md-4 mb-3">
+                <div class="card text-white bg-success">
+                     <!-- 3. Colocado o conteúdo dentro da div card-body correta -->
+                     <div class="card-body">
+                         <h5 class="card-title">Roteamento</h5>
+                         <p class="card-text">Status: op</p>   
+                     </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Atenção -->
+            <div class="col-12 col-md-4 mb-3">
+                <div class="card text-white bg-warning">
+                    <div class="card-body">
+                        <h5 class="card-title text-dark">Roteamento</h5>
+                        <p class="card-text text-dark">Status: op</p>   
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Erro -->
+            <div class="col-12 col-md-4 mb-3">
+                <div class="card text-white bg-danger">
+                    <div class="card-body">
+                        <h5 class="card-title">Roteamento</h5>
+                        <p class="card-text">Status: op</p>   
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- Fim da row -->
+    </div> <!-- Fim do container -->
+
+    <!-- Bootstrap JS corrigido -->
+    <script src="https://jsdelivr.net"></script>
+  </body>
+</html>
