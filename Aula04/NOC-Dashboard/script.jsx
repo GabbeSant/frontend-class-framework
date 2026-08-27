@@ -241,9 +241,7 @@ function App() {
       <main>
         {telaAtual === 'links'
           ? <LinksComunicacao dados={dadosIniciais.infraestrutura} statusLinks={statusLinks} toggleLink={toggleLink} />
-          :<div className="veiculo-container" style={{ animationPlayState: veiculoAtivo ? 'running' : 'paused' }}>
-  <img src={veiculo.imagem} alt={veiculo.tipo} style={{ width: '60px', height: 'auto' }} />
-</div>
+          : <FrotaCategoria frota={dadosIniciais.frota} categoria={telaAtual} statusLinks={statusLinks} />
         }
       </main>
     </div>
