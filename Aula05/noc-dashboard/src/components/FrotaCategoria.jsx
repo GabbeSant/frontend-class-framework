@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 export function FrotaCategoria({ frota, statusLinks }) {
-  // A categoria agora é capturada dinamicamente pela URL (Rota)
   const { categoria } = useParams();
   const veiculosExibidos = frota.filter(v => v.tipo === categoria);
 
@@ -18,11 +17,8 @@ export function FrotaCategoria({ frota, statusLinks }) {
         if (audioCtx.state === 'suspended') { audioCtx.resume(); }
         osc = audioCtx.createOscillator();
         const gainNode = audioCtx.createGain();
-        osc.type = 'sine'; 
-        gainNode.gain.value = 0.2;
-
-        osc.connect(gainNode); 
-        gainNode.connect(audioCtx.destination);
+        osc.type = 'sine'; gainNode.gain.value = 0.2;
+        osc.connect(gainNode); gainNode.connect(audioCtx.destination);
         osc.start();
 
         let isHigh = false;
@@ -36,7 +32,6 @@ export function FrotaCategoria({ frota, statusLinks }) {
       }
     }
 
-    // Cleanup Component
     return () => {
       if (intervalId) clearInterval(intervalId);
       if (osc) { try { osc.stop(); osc.disconnect(); } catch(e){} }
@@ -44,7 +39,6 @@ export function FrotaCategoria({ frota, statusLinks }) {
     };
   }, [categoria]);
 
-  // Roteamento de Falha em Cascata (OSPF como Fallback)
   let dependeciaId = 3;
   let nomeLink = "Roteamento OSPF";
 
@@ -74,6 +68,10 @@ export function FrotaCategoria({ frota, statusLinks }) {
           
           const combustivel = 100 - (index * 15);
           
+          // Novas variáveis de mapa e GPS do passo final
+          const urlMapa = `https://www.google.com/maps/search/?api=1&query=${veiculo.latitude},${veiculo.longitude}`;
+          const textoGPS = `${veiculo.latitude}, ${veiculo.longitude}`;
+          
           return (
             <div key={veiculo.id} className="col-12 col-md-6 col-lg-4 col-xl-3 mb-4">
               <div className={`card glass-card h-100 ${!veiculoAtivo ? 'offline-mode border-danger' : ''}`}>
@@ -88,10 +86,17 @@ export function FrotaCategoria({ frota, statusLinks }) {
                       <div className="linha-vento" style={{ top: '35px', width: '30px', animationDuration: '0.6s', animationDelay: '0.2s' }}></div>
                     </div>
                   )}
-                  {/* Se quiser usar as imagens novamente, troque {veiculo.modelo} pela tag <img> */}
-                  <div className="veiculo-container" style={{ animationPlayState: veiculoAtivo ? 'running' : 'paused' }}>
+                  {/* Ícone (Emoji) transformado em link dinâmico usando o SQL */}
+                  <a
+                    href={veiculoAtivo ? urlMapa : "#"}
+                    target={veiculoAtivo ? "_blank" : "_self"}
+                    rel="noopener noreferrer"
+                    title={veiculoAtivo ? "Rastrear no Google Maps" : "Veículo Offline"}
+                    className="veiculo-container text-decoration-none"
+                    style={{ animationPlayState: veiculoAtivo ? 'running' : 'paused' }}
+                  >
                     {veiculo.modelo}
-                  </div>
+                  </a>
                 </div>
                 <div className="card-body">
                   <div className="d-flex justify-content-between mb-3 align-items-center">
@@ -116,8 +121,19 @@ export function FrotaCategoria({ frota, statusLinks }) {
                       </span>
                     </div>
                     <div className="col-6 mb-2 text-end">
-                      <strong className="text-white">GPS:</strong><br/>
-                      <span className="font-monospace text-warning">{veiculoAtivo ? veiculo.gps : 'OFFLINE'}</span>
+                      <strong className="text-white">Posição SQL:</strong><br/>
+                      {/* Texto da coordenada como link clicável com a classe corrigida */}
+                      <a
+                        href={veiculoAtivo ? urlMapa : "#"}
+                        target={veiculoAtivo ? "_blank" : "_self"}
+                        className={`font-monospace text-decoration-none ${veiculoAtivo ? 'text-warning' : 'text-secondary'}`}
+                      >
+                        {veiculoAtivo ? textoGPS : 'OFFLINE'}
+                      </a>
+                      {/* Exibe o Timestamp que veio do SQLite para provar que é tempo real */}
+                      <div style={{ fontSize: '0.65rem', marginTop: '4px' }}>
+                        Sync: {veiculoAtivo ? new Date(veiculo.ultima_atualizacao).toLocaleTimeString() : '--:--:--'}
+                      </div>
                     </div>
                   </div>
                 </div>
